@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #e0e0e0;
+            font-family: "Roboto", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #8bcc8f;
+            color: white;
+            padding: 30px;
+            width: 100%;
+            height: 130px;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .signup-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+        }
+
+        .book-page {
+            background-color: #f9f9f9;
+            padding: 20px;
+            width: 45%;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin-right: 20px;
+        }
+
+        .book-page:before,
+        .book-page:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            position: absolute;
+        }
+
+        .book-page:before {
+            top: 0;
+            left: 0;
+            border-width: 0 25px 25px 0;
+            border-color: transparent #f9f9f9 transparent transparent;
+        }
+
+        .book-page:after {
+            bottom: 0;
+            left: 0;
+            border-width: 25px 25px 0 0;
+            border-color: transparent #f9f9f9 transparent transparent;
+        }
+
+        .book-page p {
+            font-style: italic;
+            color: #333;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .signup-box {
+            width: 50%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+
+        h4 {
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+        }
+
+        form {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        form label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #8bcc8f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .para-2 {
+            font-size: 16px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .para-2 a {
+            text-decoration: none;
+            color: #8bcc8f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <h2>Recipe & Nutrition Portal Sign Up</h2>
+    </div><br><br><br>
+    <div class="signup-container">
+        <div class="book-page">
+            <p>“The best recipes are those where you can feel the chef’s personality and creativity shining through.”</p>
+            <p>“Nutrient-rich food is the key to a healthy and fulfilling life.”</p>
+        </div>
+        <div class="signup-box">
+            <h1>Sign Up</h1>
+            <h4>to explore recipes and nutrient values</h4>
+            <form action="signupsubmit" method="get">
+                <label>First Name</label><br>
+                <input type="text" name="first_name" placeholder="Your first name" /><br>
+                <label>Last Name</label><br>
+                <input type="text" name="last_name" placeholder="Your last name" /><br>
+                <label>Email</label><br>
+                <input type="email" name="email" placeholder="Your email" /><br>
+                <label>Password</label><br>
+                <input type="password" name="password" placeholder="Your password" /><br>
+                <label>Confirm Password</label><br>
+                <input type="password" name="password" placeholder="Confirm your password" /><br><br>
+                <button>Submit</button>
+            </form>
+            <p>
+                By clicking the Sign Up button, you agree to our <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+            </p>
+            <p class="para-2">
+                Already have an account? <a href="login.ejs">Login here</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

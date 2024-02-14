@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" /> 
+    <title>Recipe Finder</title>
+    <style>
+    body {
+        background-color: white;
+    }
+    .container {
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+    }
+    input {
+        height: 25px;
+        width: 350px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    h1 {
+        font-size: 90px;
+        width: 100%;
+        height: 120px;
+        padding: 10px;
+        background-color:  #6CB670;;
+    }
+    #search-btn {
+        height: 35px;
+        width: 150px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    /* Add this CSS to style your recipe card */
+.recipe-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 7px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.recipe-card h3 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.recipe-card p {
+    font-size: 16px;
+    color: #777;
+    margin: 5px 0;
+}
+
+.recipe-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+}
+
+.recipe-card:hover {
+    transform: scale(1.25);
+}
+
+    .error {
+        color: red;
+    }
+</style>
+
+</head>
+
+<body>
+    <br><br><br><br><br><br><br><br>
+    <center><h1>Search for a recipe.. </h1></center>
+    <div class "container">
+        <div class "search-box"><br><br>
+            <center><input type "text" placeholder="Type the recipe keyword here.." id="inp-recipe" /></center><br><br><br>
+            <center><button id="search-btn">Search</button></center>
+        </div>
+        <div class "result" id="result"></div>
+    </div>
+    <!-- Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const edamamAPIKey = 'aac1e42f54eb5731d835c0bf732e2090'; 
+            const edamamAPIId = '63a33edb'; 
+            const result = document.getElementById("result");
+            const btn = document.getElementById("search-btn");
+
+            btn.addEventListener("click", () => {
+                let inpRecipe = document.getElementById("inp-recipe").value;
+                const apiUrl = `https://api.edamam.com/api/recipes/v2?type=public&q=${inpRecipe}&app_id=${edamamAPIId}&app_key=${edamamAPIKey}`;
+
+                fetch(apiUrl)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        if (data.hits && data.hits.length > 0) {
+                            result.innerHTML = '';
+                            data.hits.forEach((recipe) => {
+                                const recipeCard = document.createElement('div');
+                                recipeCard.classList.add('recipe-card');
+                                recipeCard.innerHTML = `
+                                    <h3>${recipe.recipe.label}</h3>
+                                    <p>Calories: ${Math.round(recipe.recipe.calories)}</p>
+                                    <p>Protein: ${Math.round(recipe.recipe.totalNutrients.PROCNT.quantity)}g</p>
+                                    <p>Fat: ${Math.round(recipe.recipe.totalNutrients.FAT.quantity)}g</p>
+                                    <p>Carbs: ${Math.round(recipe.recipe.totalNutrients.CHOCDF.quantity)}g</p>
+                                    <p>Cholesterol: ${Math.round(recipe.recipe.totalNutrients.CHOLE.quantity)}mg</p>
+                                    <p>Sodium: ${Math.round(recipe.recipe.totalNutrients.NA.quantity)}mg</p>
+                                    <p>Calcium: ${Math.round(recipe.recipe.totalNutrients.CA.quantity)}mg</p>
+                                    <p>Magnesium: ${Math.round(recipe.recipe.totalNutrients.MG.quantity)}mg</p>
+                                    <p>Potassium: ${Math.round(recipe.recipe.totalNutrients.K.quantity)}mg</p>
+                                    <p>Iron: ${Math.round(recipe.recipe.totalNutrients.FE.quantity)}mg</p>
+                                    <img src="${recipe.recipe.image}" alt="${recipe.recipe.label}" />
+                                `;
+                                result.appendChild(recipeCard);
+                            });
+                        } else {
+                            result.innerHTML = '<h3 class="error">No recipes found</h3>';
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching data:', error);
+                        result.innerHTML = '<h3 class="error">An error occurred while fetching data</h3>';
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>

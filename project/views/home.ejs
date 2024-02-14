@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Foodie Delights - Home Page</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background:  #6CB670;
+      height: 90px;
+      overflow: hidden;
+    }
+
+    .navbar a {
+      float: right;
+      display: block;
+      margin-right: 90px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background: #debbb1;
+      color: #333;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+      color: rgb(14, 2, 2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 100px;
+      font-size: 36px;
+    }
+
+    .welcome-text {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    .recipe-section {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .recipe-section h2 {
+      font-size: 28px;
+      color: #d9bfb7;
+    }
+
+    .recipe-section p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .nutritional-info {
+      margin-top: 40px;
+      text-align: center;
+      background:  #6CB670;
+      padding: 20px;
+    }
+
+    .nutritional-info h2 {
+      font-size: 28px;
+      color: white;
+    }
+
+    .nutritional-info p {
+      font-size: 18px;
+      color: rgb(10, 1, 1);
+      margin-top: 10px;
+    }
+    .hlo {
+      font-size: 60px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="/login.ejs">Login</a>
+    <a href="/signup.ejs">Sign Up</a>
+    <a href="/login.ejs">features</a>
+    <a href="/signup.ejs">about</a>
+  </div>
+  <div class="container">
+    <h1 class="hlo">Welcome to Foodie Delights</h1>
+    <p class="welcome-text">Explore our mouth-watering recipes and get inspired!</p>
+    </div>
+
+    <div class="recipe-section">
+      <h2>Featured Recipes</h2>
+      <p>Discover a wide range of recipes, from appetizers to desserts. Our collection includes diverse cuisines and dietary options.</p>
+      <a href="/signup.ejs">Browse Recipes</a>
+    </div>
+
+    <div class="nutritional-info">
+      <h2>Nutritional Information</h2>
+      <p>Get detailed nutritional information for every recipe. Make informed choices for a healthier lifestyle.</p>
+      <a href="/signup.ejs">Learn More</a>
+    </div>
+  </div>
+</body>
+</html>
